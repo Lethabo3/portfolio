@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lethabo Sekoto</title>
+    <style>
+        @font-face {
+            font-family: 'GeneralSans-Medium';
+            src: url('../fonts/GeneralSans-Medium.woff2') format('woff2'),
+                 url('../fonts/GeneralSans-Medium.woff') format('woff'),
+                 url('../fonts/GeneralSans-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-display: swap;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'GeneralSans-Regular';
+            src: url('../fonts/GeneralSans-Regular.woff2') format('woff2'),
+                 url('../fonts/GeneralSans-Regular.woff') format('woff'),
+                 url('../fonts/GeneralSans-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-display: swap;
+            font-style: normal;
+        }
+
+        :root {
+            --text-color: #000000;
+            --border-color: #000000;
+            --spacing-unit: 120px;
+        }
+
+        body, html {
+            font-family: 'GeneralSans-Regular', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'GeneralSans-Medium', sans-serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 56px;
+            margin-bottom: 0;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 72px;
+            margin: 0 0 80px;
+            letter-spacing: -0.02em;
+            padding-top: 120px;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        
+        .intro {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile {
+            font-size: 24px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .profile a {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .experience-item {
+            padding: 80px 0;
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .experience-item:last-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience-meta {
+            grid-column: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .role-location-group {
+            margin-bottom: auto;
+        }
+
+        .role {
+            font-size: 18px;
+            margin: 0;
+            color: #555;
+        }
+        
+        .duration {
+            font-size: 18px;
+            margin: 0;
+            color: #555;
+            margin-top: auto;
+        }
+
+        .location {
+            font-size: 18px;
+            margin: 8px 0 0;
+            color: #555;
+        }
+
+        .experience-description {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            padding-top: 48px;
+        }
+        
+        .description {
+            margin-top: auto;
+        }
+
+        .experience-header {
+            margin-bottom: 40px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .experience-item h3 {
+            font-size: 30px;
+            margin: 0 0 20px 0;
+        }
+
+        .description {
+            color: #555;
+            font-size: 18px;
+            width: 100%;
+            max-width: 100%;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Me section specific styles */
+        #me .experience-item {
+            border: none;
+            padding: 0;
+            margin-bottom: 0;
+            display: block;
+            height: calc(100vh - 200px);
+        }
+
+        #me .description {
+            width: 100%;
+            font-size: 32px;
+            line-height: 1.6;
+            margin: 0;
+            color: #000;
+        }
+
+        .connect {
+            padding: 0;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .connect a {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            display: block;
+            font-size: 24px;
+            margin-bottom: 24px;
+            transition: opacity 0.3s ease;
+        }
+
+        .connect a:last-child {
+            margin-bottom: 0;
+        }
+
+        .connect a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+
+            h2 {
+                font-size: 56px;
+                padding-top: 80px;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .experience-description {
+                grid-column: 1;
+            }
+
+            .duration {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 40px;
+                padding-top: 60px;
+                margin-bottom: 40px;
+            }
+
+            .profile {
+                font-size: 18px;
+            }
+
+            .experience-header {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .experience-item {
+                padding: 40px 0;
+            }
+
+            .experience-item h3 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .role, .location, .duration {
+                font-size: 16px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            #me .description {
+                font-size: 18px;
+            }
+
+            .connect a {
+                font-size: 18px;
+                margin-bottom: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 32px;
+                padding-top: 40px;
+                margin-bottom: 30px;
+            }
+
+            .profile {
+                font-size: 16px;
+            }
+
+            .experience-header {
+                font-size: 16px;
+            }
+
+            .experience-item h3 {
+                font-size: 20px;
+            }
+
+            .role, .location, .duration, .description {
+                font-size: 15px;
+            }
+
+            #me .description {
+                font-size: 16px;
+            }
+
+            .connect a {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+        }
+
+        .description a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s ease;
+}
+
+.description a:hover {
+    opacity: 0.7;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="intro">
+            <h1>Lethabo Sekoto</h1>
+            <p class="profile">
+                Founder at <a href="https://votalityai.com" target="_blank">Votality</a><br>
+                Previous: <a href="https://drivestedi.com" target="_blank">Stedi</a>, <a href="https://vybrain.drivestedi.com" target="_blank">Neurosic</a><br>
+                CS at <a href="https://belgiumcampus.ac.za" target="_blank">Belgium Campus</a>
+            </p>
+        </header>
+
+        <section id="code">
+            <h2>Code</h2>
+            <div class="experience-header">
+                I love building consumer products and research work.
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <h3>Neurosic</h3>
+                    <div class="role-location-group">
+                        <div class="role">Founder & CEO</div>
+                        <div class="location">Pretoria, GP</div>
+                    </div>
+                    <div class="duration">Oct 2024 - Present · 5 mos</div>
+                </div>
+                <div class="experience-description">
+                    <p class="description">Researching neural synchronization and wave science to improve cognitive processing using artificial intelligence in brain computer interfaces that'll be able to detect neural oscillation within the neurons in the brain<br><br>Here are some of my research articles: <a href="https://vybrain.drivestedi.com/tensor-fields.html">Tensors Fields</a>, <a href="https://vybrain.drivestedi.com/neural-synchronisation.html">Neural Synchronisation</a></p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <h3>Votality</h3>
+                    <div class="role-location-group">
+                        <div class="role">Founder & CEO</div>
+                        <div class="location">Pretoria, GP</div>
+                    </div>
+                    <div class="duration">Jul 2024 - Present · 8 mos</div>
+                </div>
+                <div class="experience-description">
+                    <p class="description">Votality brings the full power of stock market analysis into one market research platform, letting each user understand market trends in their own way and at their own level.<br><br> It turns financial data analytics into clear, useful market intelligence that matches how you think.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-meta">
+                    <h3>Stedi</h3>
+                    <div class="role-location-group">
+                        <div class="role">Founder & CEO</div>
+                        <div class="location">Pretoria, GP</div>
+                    </div>
+                    <div class="duration">Jan 2022 - Feb 2025 · 3 yrs 2 mos</div>
+                </div>
+                <div class="experience-description">
+                    <p class="description">Reduces costs for drivers by incentivising safe driving behaviour through discount rewards for safe driving, making driving safer and worthwhile.<br><br>
+                    Helps small businesses gain exposure and resources to improve and manage their discount services.<br><Br> Stedi uses machine learning to understand user behaviour when approaching businesses, then helps businesses using artificial intelligence to improve their discount products to fit customer preference.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="me">
+            <h2>Me</h2>
+            <div class="experience-item">
+                <p class="description">
+                    Grew up watching lots of movies about hacking; I loved them so much that I had to learn. I started coding at 13 years old and used to go to school without sleep because I spent all night coding, haha.<br><br>
+                    Went to Amberfield College, where I got more exposed to coding in my IT class. I also studied physics, which was nice.<br><br>
+                    In my free time, I enjoy coding, researching physics, working out, and listening to music.
+                </p>
+            </div>
+        </section>
+
+        <section id="connect">
+            <h2>Connect</h2>
+            <div class="connect">
+                <a href="https://x.com/misfitslump" target="_blank">Twitter</a>
+                <a href="https://za.linkedin.com/in/lethabo-sekoto-0549081b2" target="_blank">LinkedIn</a>
+                <a href="mailto:sekotonjabulo@gmail.com">Email</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
